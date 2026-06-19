@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#060b18"/>
+      <stop offset="50%" stop-color="#0c1222"/>
+      <stop offset="100%" stop-color="#080c14"/>
+    </linearGradient>
+
+    <linearGradient id="cyanGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00f3ff"/>
+      <stop offset="50%" stop-color="#00c8d4"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+
+    <linearGradient id="indigoGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+
+    <linearGradient id="logoBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00f3ff"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+
+    <linearGradient id="glowRight" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="rgba(0,243,255,0)"/>
+      <stop offset="50%" stop-color="rgba(0,243,255,0.03)"/>
+      <stop offset="100%" stop-color="rgba(0,243,255,0)"/>
+    </linearGradient>
+
+    <linearGradient id="glowVertical" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(99,102,241,0)"/>
+      <stop offset="40%" stop-color="rgba(99,102,241,0.04)"/>
+      <stop offset="100%" stop-color="rgba(99,102,241,0)"/>
+    </linearGradient>
+
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="1" stdDeviation="3" flood-color="rgba(0,0,0,0.4)"/>
+    </filter>
+
+    <filter id="glowFilter">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="320" fill="url(#bg)" rx="16"/>
+
+  <!-- Grid overlay -->
+  <rect width="1200" height="320" fill="url(#grid)" rx="16"/>
+
+  <!-- Glow effects -->
+  <rect x="100" y="0" width="1000" height="200" fill="url(#glowRight)" rx="200"/>
+  <rect x="400" y="160" width="400" height="160" fill="url(#glowVertical)" rx="160"/>
+
+  <!-- Top accent line -->
+  <rect x="40" y="24" width="1120" height="1" fill="url(#cyanGrad)" opacity="0.15"/>
+
+  <!-- Decorative corner elements -->
+  <g opacity="0.06">
+    <rect x="40" y="24" width="3" height="3" rx="1" fill="#00f3ff"/>
+    <rect x="1157" y="24" width="3" height="3" rx="1" fill="#6366f1"/>
+    <rect x="40" y="293" width="3" height="3" rx="1" fill="#6366f1"/>
+    <rect x="1157" y="293" width="3" height="3" rx="1" fill="#00f3ff"/>
+  </g>
+
+  <!-- Floating particles -->
+  <g opacity="0.04">
+    <circle cx="180" cy="260" r="2" fill="#00f3ff"/>
+    <circle cx="350" cy="180" r="1.5" fill="#6366f1"/>
+    <circle cx="520" cy="280" r="2.5" fill="#00f3ff"/>
+    <circle cx="780" cy="160" r="1.5" fill="#6366f1"/>
+    <circle cx="920" cy="270" r="2" fill="#00f3ff"/>
+    <circle cx="1050" cy="200" r="1.5" fill="#6366f1"/>
+  </g>
+
+  <!-- Logo box -->
+  <g filter="url(#shadow)">
+    <rect x="60" y="90" width="68" height="68" rx="14" fill="url(#logoBg)" opacity="0.12"/>
+    <rect x="60" y="90" width="68" height="68" rx="14" fill="none" stroke="url(#logoBg)" stroke-width="1.5" opacity="0.35"/>
+    <text x="94" y="134" font-family="Inter,'Segoe UI',system-ui,sans-serif" font-size="36" font-weight="800" fill="#fff" text-anchor="middle" filter="url(#glowFilter)">X</text>
+  </g>
+
+  <!-- Logo glow ring -->
+  <rect x="56" y="86" width="76" height="76" rx="18" fill="none" stroke="url(#cyanGrad)" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- Title -->
+  <text x="148" y="120" font-family="Inter,'Segoe UI',system-ui,sans-serif" font-size="40" font-weight="700" fill="#ffffff" letter-spacing="-1.5">xHostP</text>
+
+  <!-- Version badge -->
+  <rect x="148" y="132" width="68" height="20" rx="5" fill="rgba(0,243,255,0.06)" stroke="rgba(0,243,255,0.08)" stroke-width="1"/>
+  <text x="182" y="146" font-family="'JetBrains Mono','Consolas',monospace" font-size="10" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="0.5">v1.0.0</text>
+
+  <!-- Tagline -->
+  <text x="148" y="176" font-family="Inter,'Segoe UI',system-ui,sans-serif" font-size="14" fill="rgba(255,255,255,0.35)" letter-spacing="0.4">Embedded web administration panel for Paper 1.20+ servers</text>
+
+  <!-- Feature pills row -->
+  <g font-family="Inter,'Segoe UI',system-ui,sans-serif" font-size="11.5" font-weight="500" letter-spacing="0.3">
+    <!-- Console -->
+    <rect x="60" y="208" width="98" height="30" rx="7" fill="rgba(0,243,255,0.06)" stroke="rgba(0,243,255,0.1)" stroke-width="1"/>
+    <circle cx="76" cy="223" r="3" fill="#00f3ff" opacity="0.6"/>
+    <text x="85" y="227" fill="#00f3ff" opacity="0.85">Console</text>
+
+    <!-- Status -->
+    <rect x="168" y="208" width="90" height="30" rx="7" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.1)" stroke-width="1"/>
+    <circle cx="184" cy="223" r="3" fill="#6366f1" opacity="0.6"/>
+    <text x="193" y="227" fill="#6366f1" opacity="0.85">Status</text>
+
+    <!-- Players -->
+    <rect x="268" y="208" width="96" height="30" rx="7" fill="rgba(0,243,255,0.06)" stroke="rgba(0,243,255,0.1)" stroke-width="1"/>
+    <circle cx="284" cy="223" r="3" fill="#00f3ff" opacity="0.6"/>
+    <text x="293" y="227" fill="#00f3ff" opacity="0.85">Players</text>
+
+    <!-- Store -->
+    <rect x="374" y="208" width="84" height="30" rx="7" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.1)" stroke-width="1"/>
+    <circle cx="390" cy="223" r="3" fill="#6366f1" opacity="0.6"/>
+    <text x="399" y="227" fill="#6366f1" opacity="0.85">Store</text>
+
+    <!-- Files -->
+    <rect x="468" y="208" width="82" height="30" rx="7" fill="rgba(0,243,255,0.06)" stroke="rgba(0,243,255,0.1)" stroke-width="1"/>
+    <circle cx="484" cy="223" r="3" fill="#00f3ff" opacity="0.6"/>
+    <text x="493" y="227" fill="#00f3ff" opacity="0.85">Files</text>
+  </g>
+
+  <!-- Stats section -->
+  <g font-family="Inter,'Segoe UI',system-ui,sans-serif">
+    <!-- Line -->
+    <line x1="60" y1="266" x2="550" y2="266" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+
+    <!-- Zero deps -->
+    <text x="60" y="288" font-size="11" fill="rgba(255,255,255,0.25)" letter-spacing="0.8">ZERO DEPENDENCIES</text>
+    <text x="60" y="280" font-size="13" font-weight="600" fill="rgba(255,255,255,0.7)">JDK Built-in HTTP</text>
+
+    <!-- Binding -->
+    <text x="250" y="288" font-size="11" fill="rgba(255,255,255,0.25)" letter-spacing="0.8">BINDING</text>
+    <text x="250" y="280" font-size="13" font-weight="600" fill="rgba(255,255,255,0.7)">127.0.0.1</text>
+
+    <!-- SPA -->
+    <text x="400" y="288" font-size="11" fill="rgba(255,255,255,0.25)" letter-spacing="0.8">ARCHITECTURE</text>
+    <text x="400" y="280" font-size="13" font-weight="600" fill="rgba(255,255,255,0.7)">Single-page App</text>
+  </g>
+
+  <!-- Right side decorative terminal window -->
+  <g opacity="0.06">
+    <rect x="680" y="60" width="460" height="200" rx="10" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    <!-- Title bar -->
+    <rect x="680" y="60" width="460" height="32" rx="10" fill="rgba(255,255,255,0.03)"/>
+    <rect x="680" y="82" width="460" height="1" fill="rgba(255,255,255,0.04)"/>
+    <circle cx="698" cy="76" r="4" fill="#ef4444" opacity="0.4"/>
+    <circle cx="714" cy="76" r="4" fill="#eab308" opacity="0.4"/>
+    <circle cx="730" cy="76" r="4" fill="#22c55e" opacity="0.4"/>
+    <text x="840" y="80" font-family="'JetBrains Mono','Consolas',monospace" font-size="10" fill="rgba(255,255,255,0.15)" text-anchor="middle">localhost:8080</text>
+    <!-- Terminal lines -->
+    <text x="700" y="108" font-family="'JetBrains Mono','Consolas',monospace" font-size="11" fill="rgba(0,243,255,0.2)">$ ./xhostp start</text>
+    <text x="700" y="128" font-family="'JetBrains Mono','Consolas',monospace" font-size="11" fill="rgba(255,255,255,0.1)">[INFO] Server starting...</text>
+    <text x="700" y="148" font-family="'JetBrains Mono','Consolas',monospace" font-size="11" fill="rgba(255,255,255,0.1)">[INFO] Bind: 127.0.0.1:8080</text>
+    <text x="700" y="168" font-family="'JetBrains Mono','Consolas',monospace" font-size="11" fill="rgba(0,243,255,0.25)">[INFO] Panel ready</text>
+    <text x="700" y="195" font-family="'JetBrains Mono','Consolas',monospace" font-size="11" fill="rgba(99,102,241,0.2)">&gt; Welcome to xHostP</text>
+    <rect x="700" y="218" width="6" height="14" fill="rgba(0,243,255,0.25)" rx="1">
+      <animate attributeName="opacity" values="0.25;0.05;0.25" dur="1.5s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Bottom accent bar -->
+  <rect x="40" y="295" width="1120" height="2" rx="1" fill="url(#cyanGrad)" opacity="0.15"/>
+</svg>
