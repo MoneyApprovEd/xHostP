@@ -1,14 +1,16 @@
 <p align="center">
-  <img src="banner.svg" alt="xHostP Web Panel" width="100%">
+  <img src="banner.svg" alt="xHostP Web Panel">
 </p>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Paper-1.20+-blue?style=flat-square" alt="Paper">
-  <img src="https://img.shields.io/badge/Java-17%2B-orange?style=flat-square" alt="Java">
-  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License">
-  <img src="https://img.shields.io/badge/Build-Maven-red?style=flat-square" alt="Maven">
-  <img src="https://img.shields.io/badge/Dependencies-Zero-important?style=flat-square" alt="Zero Dependencies">
-</p>
+<div align="center">
+
+[![](https://img.shields.io/badge/Paper-1.20+-blue?style=flat-square)]()
+[![](https://img.shields.io/badge/Java-17%2B-orange?style=flat-square)]()
+[![](https://img.shields.io/badge/License-MIT-green?style=flat-square)]()
+[![](https://img.shields.io/badge/Build-Maven-red?style=flat-square)]()
+[![](https://img.shields.io/badge/Dependencies-Zero-important?style=flat-square)]()
+
+</div>
 
 xHostP is a zero-dependency Paper plugin that serves a premium, single-page administration panel directly from your Minecraft server. No external web server, no complicated setup — drop the JAR into `plugins/`, restart, and open `http://localhost:8080`.
 
