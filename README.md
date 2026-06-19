@@ -95,15 +95,15 @@ Output: `target/xHostP.jar`
 │  com.sun.net.httpserver.HttpServer  │
 │  Bound to 127.0.0.1:{port}         │
 ├─────────────────────────────────────┤
-│  StaticHandler        →  /          │
-│  ConsoleHandler       →  /api/console │
-│  StatusHandler        →  /api/status  │
-│  PlayersHandler       →  /api/players │
-│  PlayerDetailHandler  →  /api/player  │
-│  StoreHandler         →  /api/store,  │
-│                          /api/project,│
-│                          /api/download│
-│  FileHandler          →  /api/files   │
+│  StaticHandler           /          │
+│  ConsoleHandler        /api/console │
+│  StatusHandler         /api/status  │
+│  PlayersHandler        /api/players │
+│  PlayerDetailHandler   /api/player  │
+│  StoreHandler          /api/store,  │
+│                        /api/project,│
+│                        /api/download│
+│  FileHandler           /api/files   │
 ├─────────────────────────────────────┤
 │       Paper API / Bukkit            │
 └─────────────────────────────────────┘
