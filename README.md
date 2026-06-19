@@ -3,205 +3,59 @@
 </p>
 
 <div align="center">
-
-![Paper](https://img.shields.io/badge/Paper-1.20+-0082C9?style=for-the-badge&logo=paper&logoColor=white)
-![Java](https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)
-![Build](https://img.shields.io/badge/Build-Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
-![Dependencies](https://img.shields.io/badge/Dependencies-Zero-8B5CF6?style=for-the-badge)
-
+  <a href="#"><img src="https://img.shields.io/badge/Paper-1.20+-0082C9?style=for-the-badge&logo=paper&logoColor=white" alt="Paper"></a> <a href="#"><img src="https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java"></a> <a href="#"><img src="https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge" alt="License"></a> <a href="#"><img src="https://img.shields.io/badge/Dependencies-Zero-8B5CF6?style=for-the-badge" alt="Dependencies"></a>
 </div>
-
----
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Features](#features)
-- [Quick Start](#quick-start)
-- [Configuration](#configuration)
-- [API](#api)
-- [Architecture](#architecture)
-- [Security](#security)
-- [Compatibility](#compatibility)
-- [Building](#building)
-- [License](#license)
 
 ---
 
 ## Overview
 
-xHostP is a **zero-dependency** Paper plugin that serves a premium, single-page administration panel directly from your Minecraft server. No external web server, no complicated setup — just drop the JAR into `plugins/`, restart, and open `http://localhost:8080`.
-
-The entire frontend is embedded inside the plugin itself as a Java text block — HTML, CSS, and JavaScript all in one file, with zero external assets at runtime.
-
----
+xHostP is a lightweight, zero-dependency server administration panel designed for Paper and Spigot. It serves a modern, single-page application directly from your Minecraft server without requiring external web servers or reverse proxies. Just drop the JAR into your `plugins` folder, restart, and manage your server securely from `localhost`.
 
 ## Features
 
-### Console
-Live server console with real-time log streaming. Commands execute on the main thread via the Bukkit scheduler. Color-coded output (INFO / WARN / ERROR), auto-scroll, and an unread badge for activity when scrolled up.
-
-### Status Dashboard
-Four real-time metric cards: RAM usage (used / max + percentage), CPU load, TPS with color thresholds (green > 19, yellow > 15, red < 15), and online player count.
-
-### Player Management
-Online players displayed in a table with avatars (mc-heads.net), health bars, food, XP, ping indicators, and inventory slot usage. Click any player to open a modal with 15 management actions:
-
-| Category | Actions |
-|---|---|
-| Permissions | OP, DeOP |
-| Gamemode | Survival, Creative, Adventure, Spectator |
-| Movement | TP, Fly, Land |
-| Health | Heal, Feed |
-| Control | Clear, Kill, Kick, Ban |
-
-### Plugin Store
-Browse and search the Modrinth plugin catalog directly from the panel. Each card shows icon, title, author, description, and download count. Click for a detail modal with statistics and one-click install.
-
-Downloaded plugins are auto-loaded at runtime using Paper's internal `PaperPluginManagerImpl` API — the same approach as PlugManX — bypassing the Bukkit remap that fails on Paper and Folia.
-
-### File Manager
-Full filesystem access through the browser. Breadcrumb navigation, directory listing with sizes and dates, inline text editor, multi-file upload, folder creation, and file deletion with confirmation.
+* **Real-Time Console:** Stream server logs directly to your browser with color-coded output and execute commands on the main thread.
+* **Status Dashboard:** Monitor live server metrics including RAM usage, CPU load, TPS, and online player count.
+* **Advanced Player Management:** View online players with avatars, health bars, and latency. Instantly manage users (Kick, Ban, Heal, Gamemode, Teleport) via the interactive modal.
+* **Integrated Modrinth Store:** Browse, search, and install plugins directly from the Modrinth catalog. Installed plugins are auto-loaded at runtime seamlessly.
+* **Web File Manager:** Navigate your server filesystem, read/edit text files, upload assets, and manage directories directly through the browser.
 
 ---
 
-## Quick Start
+## Installation
 
-```bash
-# 1. Download the plugin
-wget https://github.com/emirlqq1_/xHostP/releases/latest/download/xHostP.jar
+1. Download the latest `xHostP.jar` from the [Releases](#) page.
+2. Place the JAR file into your server's `plugins/` directory.
+3. Restart or reload your server.
+4. Open your web browser and navigate to `http://localhost:8080`.
 
-# 2. Install
-mv xHostP.jar /path/to/server/plugins/
+*Note: For security purposes, the web panel binds strictly to `127.0.0.1` and is inaccessible from external networks.*
 
-# 3. Restart your server
-# 4. Open in your browser
-open http://localhost:8080
-```
+---
 
-The panel binds to **127.0.0.1** only and is not accessible from other machines on the network.
+## API Reference
+
+xHostP provides a lightweight RESTful API for external integrations. All endpoints return JSON format.
+
+### Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/console` | Retrieve buffered log text |
+| `POST` | `/api/console` | Execute server command |
+| `GET` | `/api/status` | Fetch RAM, CPU, TPS, and Player stats |
+| `GET` | `/api/players` | List all online players and base stats |
+| `GET` | `/api/store?q=<query>` | Search Modrinth catalog |
+| `POST` | `/api/download` | Download and auto-load a plugin |
+| `GET` | `/api/files?path=<path>` | List directory contents or read file |
+| `POST` | `/api/files` | Upload, edit, or delete files |
 
 ---
 
 ## Configuration
 
+The plugin generates a minimal `config.yml` on first boot:
+
 ```yaml
 # plugins/xHostP/config.yml
-web-port: 8080   # HTTP port (default: 8080)
-```
-
----
-
-## API
-
-All endpoints return JSON unless noted otherwise.
-
-### Console
-
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/api/console` | Buffered log text (`text/plain`) |
-| `POST` | `/api/console` | Execute command (`command=...`) |
-
-### Status
-
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/api/status` | `{ memUsed, memMax, cpuUsage, tps, onlinePlayers, maxPlayers }` |
-
-### Players
-
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/api/players` | Online players with stats |
-| `GET` | `/api/player?name=<name>` | Full player detail |
-
-### Store
-
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/api/store?q=<query>` | Modrinth search |
-| `GET` | `/api/project?slug=<slug>` | Project metadata |
-| `POST` | `/api/download` | Download + auto-load (`slug=...`) |
-
-### Files
-
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/api/files?path=<path>` | List / read |
-| `POST` | `/api/files` | Write, upload, mkdir, delete |
-
----
-
-## Architecture
-
-```
-┌──────────────────────────────────────────┐
-│            Browser (SPA)                 │
-│        http://localhost:8080             │
-└─────────────────┬────────────────────────┘
-                  │  HTTP
-┌─────────────────▼────────────────────────┐
-│  com.sun.net.httpserver.HttpServer       │
-│  Bound to 127.0.0.1:{port}              │
-├──────────────────────────────────────────┤
-│  StaticHandler         →  /              │
-│  ConsoleHandler        →  /api/console   │
-│  StatusHandler         →  /api/status    │
-│  PlayersHandler        →  /api/players   │
-│  PlayerDetailHandler   →  /api/player    │
-│  StoreHandler          →  /api/store,    │
-│                           /api/project,  │
-│                           /api/download  │
-│  FileHandler           →  /api/files     │
-├──────────────────────────────────────────┤
-│           Paper API / Bukkit             │
-└──────────────────────────────────────────┘
-```
-
-### Design Decisions
-
-- **Zero dependencies** — HTTP server is JDK built-in (`com.sun.net.httpserver`). No Netty, Jetty, or Tomcat.
-- **Single-page app** — Entire frontend (HTML + CSS + JS) stored as a Java text block in `StaticHandler.java`. No external assets at runtime.
-- **Anti-AI design** — Glassmorphism, strict opacity hierarchy, CSS-only icons, inset shadow buttons. Every detail avoids common AI-generated patterns.
-- **Runtime plugin loading** — Uses reflection to access Paper's `PaperPluginManagerImpl` directly, avoiding the `"Failed to remap plugin jar"` error.
-
----
-
-## Security
-
-- Server binds to **127.0.0.1** — localhost only
-- File manager rejects path traversal (`../`, absolute paths escaping root)
-- Commands sanitized to prevent injection
-- No authentication — intended for local access only
-
----
-
-## Compatibility
-
-| Platform | Status |
-|---|---|
-| **Paper 1.20+** | Fully tested |
-| **Folia** | Compatible |
-| **Spigot** | Limited — TPS fallback; Bukkit API may fail on complex plugins |
-
----
-
-## Building
-
-Requirements: **JDK 17+**, **Maven 3.8+**
-
-```bash
-git clone https://github.com/emirlqq1_/xHostP.git
-cd xHostP
-mvn clean package
-```
-
-Output: `target/xHostP.jar`
-
----
-
-## License
-
-Distributed under the **MIT License**. See [LICENSE](LICENSE) for more information.
+web-port: 8080   # HTTP port for the web interface
