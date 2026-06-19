@@ -1,14 +1,14 @@
 <p align="center">
+  <img src="banner.svg" alt="xHostP Web Panel" width="100%">
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/Paper-1.20+-blue?style=flat-square" alt="Paper">
   <img src="https://img.shields.io/badge/Java-17%2B-orange?style=flat-square" alt="Java">
   <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License">
   <img src="https://img.shields.io/badge/Build-Maven-red?style=flat-square" alt="Maven">
   <img src="https://img.shields.io/badge/Dependencies-Zero-important?style=flat-square" alt="Zero Dependencies">
 </p>
-
-# xHostP
-
-**Embedded web administration panel for Paper 1.20+ servers.**
 
 xHostP is a zero-dependency Paper plugin that serves a premium, single-page administration panel directly from your Minecraft server. No external web server, no complicated setup — drop the JAR into `plugins/`, restart, and open `http://localhost:8080`.
 
@@ -95,15 +95,15 @@ Output: `target/xHostP.jar`
 │  com.sun.net.httpserver.HttpServer  │
 │  Bound to 127.0.0.1:{port}         │
 ├─────────────────────────────────────┤
-│  StaticHandler           /          │
-│  ConsoleHandler        /api/console │
-│  StatusHandler         /api/status  │
-│  PlayersHandler        /api/players │
-│  PlayerDetailHandler   /api/player  │
-│  StoreHandler          /api/store,  │
-│                        /api/project,│
-│                        /api/download│
-│  FileHandler           /api/files   │
+│  StaticHandler        →  /          │
+│  ConsoleHandler       →  /api/console │
+│  StatusHandler        →  /api/status  │
+│  PlayersHandler       →  /api/players │
+│  PlayerDetailHandler  →  /api/player  │
+│  StoreHandler         →  /api/store,  │
+│                          /api/project,│
+│                          /api/download│
+│  FileHandler          →  /api/files   │
 ├─────────────────────────────────────┤
 │       Paper API / Bukkit            │
 └─────────────────────────────────────┘
